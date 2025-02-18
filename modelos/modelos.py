@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import enum
+from marshmallow import fields, Schema
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 db = SQLAlchemy()
 
@@ -48,4 +50,21 @@ class Subarea (db.Model):
     nombre = db.Column(db.String(250))
     descripcion = db.Column(db.String(550))
     fecha = db.Column(db.DateTime(timezone=True))
+
+class CategoriaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Categoria
+        include_relationships =True
+        include_fk = True
+        load_instance = True
+    nombre = fields.String()
+
+class SubcategoriaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Subcategoria
+        include_relationships =True
+        include_fk = True
+        load_instance = True
+    nombre = fields.String()
+
     
