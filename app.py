@@ -14,7 +14,8 @@ db.init_app(app)
 db.create_all()
 
 api = Api(app)
-api.add_resource(vistas.VistaCategoria, '/categoria')
+api.add_resource(vistas.VistaCategoria, '/categoria', endpoint = 'crear')
+api.add_resource(vistas.VistaCategoria, '/categoria/<int:id_categoria>', endpoint = 'editar&borrar')
 
 """ @app.route('/')
 def hello_world():
