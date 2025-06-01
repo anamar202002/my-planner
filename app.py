@@ -1,6 +1,7 @@
 from flask import Flask
 from modelos.modelos import db
-
+from vistas import *
+from flask_restful import Api
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///planner.db'
@@ -11,6 +12,9 @@ app_context.push()
 
 db.init_app(app)
 db.create_all()
+
+api = Api(app)
+api.add_resource(vistas.VistaCategoria, '/categoria')
 
 """ @app.route('/')
 def hello_world():

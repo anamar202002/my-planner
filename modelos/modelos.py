@@ -42,7 +42,7 @@ class Tarea (db.Model):
     progreso = db.Column(db.Enum(EnumProgreso), nullable=False)
 
 
-class Subarea (db.Model):
+class Subtarea (db.Model):
     __tablename__='subtarea'
 
     id = db.Column(db.Integer, primary_key = True)
@@ -67,4 +67,18 @@ class SubcategoriaSchema(SQLAlchemyAutoSchema):
         load_instance = True
     nombre = fields.String()
 
-    
+class TareaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Tarea
+        include_relationships =True
+        include_fk = True
+        load_instance = True
+    nombre = fields.String()
+
+class SubtareaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Subtarea
+        include_relationships =True
+        include_fk = True
+        load_instance = True
+    nombre = fields.String()
