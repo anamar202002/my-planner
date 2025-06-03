@@ -18,6 +18,7 @@ api.add_resource(vistas.VistaCategoria, '/categoria', endpoint = 'crear')
 api.add_resource(vistas.VistaCategoria, '/categoria/<int:id_categoria>', endpoint = 'editar&borrar')
 api.add_resource(vistas.VistaSubcategoria,'/categoria/<int:id_categoria>/subcategoria', endpoint = 'crear&listarSubcategoria')
 api.add_resource(vistas.VistaSubcategoria,'/subcategoria/<int:id_subcategoria>', endpoint = 'editar&borrarSubcategoria')
+api.add_resource(vistas.VistaTarea, '/subcategoria/<int:id_subcategoria>/tarea', endpoint = 'crear&listarTarea')
 
 """ @app.route('/')
 def hello_world():

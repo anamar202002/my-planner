@@ -56,3 +56,11 @@ class VistaSubcategoria (Resource):
     def get (self,id_categoria):
         subcategorias=db.session.query(Subcategoria).filter_by(id_categoria = id_categoria).all()
         return subcategorias_schama.dump(subcategorias)
+    
+class VistaTarea (Resource):
+    def put(self, id_subcategoria):
+        nueva_tarea = Subcategoria(nombre=request.json["nombre"], descripcon=request.json["descripcion"], id_subcategoria=id_subcategoria)
+        db.session.add(nueva_tarea)
+        db.session.commit()
+        return subcategoria_schama.dump(nueva_tarea)
+
